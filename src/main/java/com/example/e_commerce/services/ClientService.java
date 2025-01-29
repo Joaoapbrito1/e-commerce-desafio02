@@ -37,12 +37,4 @@ public class ClientService {
                 .map(client -> new ClientResponseDTO(client.getId(), client.getName(), client.getCpf(), client.getEmail()))
                 .toList();
     }
-    public ClientResponseDTO getClientByCpf(String cpf) {
-        Client client = clientRepository.findByCpf(cpf)
-                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
-
-        return new ClientResponseDTO(client.getId(), client.getName(), client.getCpf(), client.getEmail());
-    }
-
-
 }
