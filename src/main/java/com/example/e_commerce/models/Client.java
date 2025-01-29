@@ -15,6 +15,9 @@ public class Client {
     private String cpf;
     private String email;
 
+    public Client() {
+    }
+
     public Client(String name, String cpf, String email){
         this.name = name;
         this.cpf = cpf;
