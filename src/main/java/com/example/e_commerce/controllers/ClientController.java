@@ -26,4 +26,9 @@ public class ClientController {
         ClientResponseDTO clientResponseDTO = clientService.createClient(clienteRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(clientResponseDTO);
     }
+    @GetMapping
+    public ResponseEntity<List<ClientResponseDTO>> allClients() {
+        List<ClientResponseDTO> clients = clientService.allClients();
+        return ResponseEntity.ok(clients);
+    }
 }
