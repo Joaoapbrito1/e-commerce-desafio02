@@ -8,16 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ClientServices {
+public class ClientService {
 
     @Autowired
     private final ClientRepository clientRepository;
 
-    public ClientServices(ClientRepository clientRepository) {
+    public ClientService(ClientRepository clientRepository) {
         this.clientRepository = clientRepository;
     }
 
-    public ClientResponseDTO criarCliente(ClientRequestDTO clientRequestDTO) {
+    public ClientResponseDTO createClient(ClientRequestDTO clientRequestDTO) {
         Client client = new Client(
                 clientRequestDTO.getName(),
                 clientRequestDTO.getCpf(),
