@@ -31,4 +31,9 @@ public class ClientController {
         List<ClientResponseDTO> clients = clientService.allClients();
         return ResponseEntity.ok(clients);
     }
+    @GetMapping("/{cpf}")
+    public ResponseEntity<ClientResponseDTO> getClientByCpf(@PathVariable String cpf) {
+        ClientResponseDTO client = clientService.getClientByCpf(cpf);
+        return ResponseEntity.ok(client);
+    }
 }
