@@ -3,9 +3,9 @@ package com.example.e_commerce.controllers;
 
 import com.example.e_commerce.dtos.ClientRequestDTO;
 import com.example.e_commerce.dtos.ClientResponseDTO;
-import com.example.e_commerce.models.Client;
 import com.example.e_commerce.services.ClientService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +15,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/client")
 public class ClientController {
+
+    @Autowired
     private final ClientService clientService;
 
     public ClientController(ClientService clientService) {
@@ -30,5 +32,10 @@ public class ClientController {
     public ResponseEntity<List<ClientResponseDTO>> allClients() {
         List<ClientResponseDTO> clients = clientService.allClients();
         return ResponseEntity.ok(clients);
+    }
+    @GetMapping("/{cpf}")
+    public ResponseEntity<ClientResponseDTO> getClientByCpf(@PathVariable String cpf) {
+        ClientResponseDTO client = clientService.getClientByCpf(cpf);
+        return ResponseEntity.ok(client);
     }
 }
