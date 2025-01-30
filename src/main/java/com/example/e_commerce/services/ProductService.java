@@ -21,10 +21,10 @@ public class ProductService {
         );
         Product productSave = productRepository.save(product);
         return new ProductResponseDTO(
-                product.getId(),
-                product.getName(),
-                product.getPrice(),
-                product.getQuantity()
+                productSave.getId(),
+                productSave.getName(),
+                productSave.getPrice(),
+                productSave.getQuantity()
         );
     }
 }
