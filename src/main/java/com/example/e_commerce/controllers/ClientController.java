@@ -36,4 +36,8 @@ public class ClientController {
         ClientResponseDTO client = clientService.getClientByCpf(cpf);
         return ResponseEntity.ok(client);
     }
+    @PutMapping("/{cpf}")
+    public ResponseEntity<ClientResponseDTO> updateClient(@PathVariable String cpf, @Valid @RequestBody ClientRequestDTO clientRequestDTO){
+        return ResponseEntity.ok(clientService.updateClient(cpf, clientRequestDTO));
+    }
 }
