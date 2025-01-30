@@ -4,7 +4,6 @@ import com.example.e_commerce.dtos.ClientRequestDTO;
 import com.example.e_commerce.dtos.ClientResponseDTO;
 import com.example.e_commerce.models.Client;
 import com.example.e_commerce.repositories.ClientRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -43,4 +42,21 @@ public class ClientService {
 
         return new ClientResponseDTO(client.getId(), client.getName(), client.getCpf(), client.getEmail());
     }
+    private ClientResponseDTO mapToResponse(Client client) {
+        return new ClientResponseDTO(client.getId(),
+                client.getName(),
+                client.getCpf(),
+                client.getEmail());
+    }
+    public ClientResponseDTO updateClient(String cpf, ClientRequestDTO clientRequestDTO) {
+        Client client = clientRepository.findByCpf(cpf)
+                .orElseThrow(() -> new RuntimeException("Cliente com de cpf '" + cpf + "' não encontrado"));
+
+        client.setName(clientRequestDTO.getName());
+        client.setCpf(clientRequestDTO.getCpf());
+        client.setEmail(clientRequestDTO.getEmail());
+
+        return mapToResponse(clientRepository.save(client));
+    }
+
 }
