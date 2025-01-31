@@ -1,6 +1,5 @@
 package com.example.e_commerce.controllers;
 
-import com.example.e_commerce.dtos.ClientResponseDTO;
 import com.example.e_commerce.dtos.ProductRequestDTO;
 import com.example.e_commerce.dtos.ProductResponseDTO;
 import com.example.e_commerce.services.ProductService;
@@ -31,5 +30,11 @@ public class ProductController {
     public ResponseEntity<List<ProductResponseDTO>> allProducts() {
         List<ProductResponseDTO> produts = productService.allProducts();
         return ResponseEntity.ok(produts);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProduct(@Valid @PathVariable Long id) {
+        productService.deleteProduct(id);
+        return ResponseEntity.noContent().build();
     }
 }
