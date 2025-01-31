@@ -6,6 +6,8 @@ import com.example.e_commerce.models.Product;
 import com.example.e_commerce.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ProductService {
     private final ProductRepository productRepository;
@@ -26,5 +28,10 @@ public class ProductService {
                 productSave.getPrice(),
                 productSave.getQuantity()
         );
+    }
+    public List<ProductResponseDTO> allProducts() {
+        return productRepository.findAll().stream()
+                .map(product -> new ProductResponseDTO(product.getId(), product.getName(), product.getPrice(), product.getQuantity()))
+                .toList();
     }
 }
