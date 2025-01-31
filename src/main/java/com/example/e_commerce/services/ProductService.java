@@ -34,4 +34,10 @@ public class ProductService {
                 .map(product -> new ProductResponseDTO(product.getId(), product.getName(), product.getPrice(), product.getQuantity()))
                 .toList();
     }
+    public void deleteProduct(Long id) {
+        if (!productRepository.existsById(id)) {
+            throw new RuntimeException("Product not found for deletion.");
+        }
+        productRepository.deleteById(id);
+    }
 }
