@@ -43,4 +43,27 @@ public class GlobalExceptionHandler {
     public ResponseEntity<String> handleDuplicateProductException(DuplicateProductException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
+    // Purchase Exceptions
+    @ExceptionHandler(PurchaseNotFoundException.class)
+    public ResponseEntity<String> handlePurchaseNotFoundException(PurchaseNotFoundException ex) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(InsufficientStockException.class)
+    public ResponseEntity<String> handleInsufficientStockException(InsufficientStockException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    @ExceptionHandler(InvalidPurchaseException.class)
+    public ResponseEntity<String> handleInvalidPurchaseException(InvalidPurchaseException ex) {
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
+    }
+
+    // Generic handling for unexpected exceptions
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<Map<String, String>> handleGenericException(Exception ex) {
+        Map<String, String> error = new HashMap<>();
+        error.put("error", "Ocorreu um erro inesperado: " + ex.getMessage());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(error);
+    }
 }
