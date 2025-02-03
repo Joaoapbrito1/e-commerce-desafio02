@@ -3,7 +3,6 @@ package com.example.e_commerce.controllers;
 
 import com.example.e_commerce.dtos.ClientRequestDTO;
 import com.example.e_commerce.dtos.ClientResponseDTO;
-import com.example.e_commerce.models.Client;
 import com.example.e_commerce.services.ClientService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
