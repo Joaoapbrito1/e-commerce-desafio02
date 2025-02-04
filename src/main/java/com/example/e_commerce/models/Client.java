@@ -14,7 +14,7 @@ public class Client {
     @NotBlank(message = "O nome do cliente é obrigatório.")
     private String name;
 
-    @CPF(message = "O cpf deve ser válido.")
+    //@CPF(message = "O cpf deve ser válido.")
     @Column(unique = true, nullable = false)
     private String cpf;
 
