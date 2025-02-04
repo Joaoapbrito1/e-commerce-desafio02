@@ -9,7 +9,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Positive;
 
 @Entity
-public class Product {
+public class Merchandise {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -24,10 +24,10 @@ public class Product {
     @Min(value = 0, message = "The quantity must be greater than or equal to zero")
     private int quantity;
 
-    public Product() {
+    public Merchandise() {
     }
 
-    public Product(String name, double price, int quantity) {
+    public Merchandise(String name, double price, int quantity) {
         this.name = name;
         this.price = price;
         this.quantity = quantity;

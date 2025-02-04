@@ -1,14 +1,14 @@
 package com.example.e_commerce.dtos;
 
 
-public class ClientResponseDTO {
+public class CustomerResponseDTO {
 
     private Long id;
     private String name;
     private String cpf;
     private String email;
 
-    public ClientResponseDTO(Long id, String name,String cpf, String email) {
+    public CustomerResponseDTO(Long id, String name, String cpf, String email) {
         this.id = id;
         this.name = name;
         this.cpf = cpf;

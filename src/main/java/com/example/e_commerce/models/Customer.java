@@ -1,12 +1,15 @@
-package com.example.e_commerce.dtos;
+package com.example.e_commerce.models;
 
-import jakarta.persistence.Column;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import org.hibernate.validator.constraints.br.CPF;
 
-public class ClientRequestDTO {
+@Entity
+public class Customer {
 
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Long id;
     @NotBlank(message = "O nome do cliente é obrigatório.")
     private String name;
 
@@ -18,32 +21,39 @@ public class ClientRequestDTO {
     @Column(unique = true, nullable = false)
     private String email;
 
-    public ClientRequestDTO(String name,String cpf, String email) {
+    public Customer() {
+    }
+
+    public Customer(String name, String cpf, String email){
         this.name = name;
         this.cpf = cpf;
         this.email = email;
     }
 
-    public String getName() {
-        return name;
-    }
-
     public void setName(String name) {
         this.name = name;
-    }
-    public String getCpf(){
-        return cpf;
     }
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    public String getEmail() {
-        return email;
+    public void setEmail(String email) {
+        this.email= email;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getCpf() {
+        return cpf;
+    }
+    public String getEmail() {
+        return email;
     }
 }

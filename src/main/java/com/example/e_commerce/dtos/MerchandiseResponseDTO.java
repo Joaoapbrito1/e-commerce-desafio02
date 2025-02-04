@@ -1,29 +1,22 @@
 package com.example.e_commerce.dtos;
 
-import jakarta.persistence.Column;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Positive;
+public class MerchandiseResponseDTO {
 
-public class ProductRequestDTO {
-
-    @NotBlank(message = "the product name is mandatory")
-    @Column(unique = true, nullable = false)
+    private Long id;
     private String name;
-
-    @Positive(message = "The price must be greater than zero")
     private double price;
-
-    @Min(value = 0, message = "The quantity must be greater than or equal to zero")
     private int quantity;
 
-
-    public ProductRequestDTO(String name, double price, int quantity) {
+    public MerchandiseResponseDTO(Long id, String name, double price, int quantity) {
+        this.id = id;
         this.name = name;
         this.price = price;
         this.quantity = quantity;
     }
 
+    public Long getId() {
+        return id;
+    }
     public String getName() {
         return name;
     }
@@ -32,6 +25,9 @@ public class ProductRequestDTO {
     }
     public int getQuantity() {
         return quantity;
+    }
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public void setName(String name) {

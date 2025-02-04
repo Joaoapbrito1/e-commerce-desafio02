@@ -12,15 +12,15 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(ClientNotFoundException.class)
-    public ResponseEntity<Map<String, String>> handleClientNotFoundException(ClientNotFoundException ex) {
+    @ExceptionHandler(CustomerNotFoundException.class)
+    public ResponseEntity<Map<String, String>> handleClientNotFoundException(CustomerNotFoundException ex) {
         Map<String, String> response = new HashMap<>();
         response.put("error", ex.getMessage());
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
-    @ExceptionHandler(DuplicateClientException.class)
-    public ResponseEntity<Map<String, String>> handleDuplicateClientException(DuplicateClientException ex) {
+    @ExceptionHandler(DuplicateCustomerException.class)
+    public ResponseEntity<Map<String, String>> handleDuplicateClientException(DuplicateCustomerException ex) {
         Map<String, String> response = new HashMap<>();
         response.put("error", ex.getMessage());
         return new ResponseEntity<>(response, HttpStatus.CONFLICT);
@@ -34,28 +34,28 @@ public class GlobalExceptionHandler {
         );
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
-    @ExceptionHandler(ProductNotFoundException.class)
-    public ResponseEntity<String> handleProductNotFoundException(ProductNotFoundException ex) {
+    @ExceptionHandler(MerchandiseNotFoundException.class)
+    public ResponseEntity<String> handleProductNotFoundException(MerchandiseNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
-    @ExceptionHandler(DuplicateProductException.class)
-    public ResponseEntity<String> handleDuplicateProductException(DuplicateProductException ex) {
+    @ExceptionHandler(DuplicateMerchandiseException.class)
+    public ResponseEntity<String> handleDuplicateProductException(DuplicateMerchandiseException ex) {
         return ResponseEntity.status(HttpStatus.CONFLICT).body(ex.getMessage());
     }
     // Purchase Exceptions
-    @ExceptionHandler(PurchaseNotFoundException.class)
-    public ResponseEntity<String> handlePurchaseNotFoundException(PurchaseNotFoundException ex) {
+    @ExceptionHandler(BuyNotFoundException.class)
+    public ResponseEntity<String> handlePurchaseNotFoundException(BuyNotFoundException ex) {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(ex.getMessage());
     }
 
-    @ExceptionHandler(InsufficientStockException.class)
-    public ResponseEntity<String> handleInsufficientStockException(InsufficientStockException ex) {
+    @ExceptionHandler(InsufficientStockPileException.class)
+    public ResponseEntity<String> handleInsufficientStockException(InsufficientStockPileException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
 
-    @ExceptionHandler(InvalidPurchaseException.class)
-    public ResponseEntity<String> handleInvalidPurchaseException(InvalidPurchaseException ex) {
+    @ExceptionHandler(InvalidBuyException.class)
+    public ResponseEntity<String> handleInvalidPurchaseException(InvalidBuyException ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(ex.getMessage());
     }
 
