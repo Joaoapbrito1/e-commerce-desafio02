@@ -70,7 +70,7 @@ O projeto segue a seguinte organização:
 - `DELETE //merchandise/{id}` - Remove um produto pelo ID.
 
 ### Compras
-- `POST /buy/{customerId}` - Realiza uma compra de um produto pelo ID.
+- `POST /buy/{merchandiseId}` - Realiza uma compra de um produto pelo ID.
 
 ## Contribuição
 Contribuições são bem-vindas! Para contribuir, siga os passos:
